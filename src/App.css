@@ -7,6 +7,8 @@
   --line: #7a2722;
   --text: #090807;
   --soft-shadow: 0 18px 40px rgba(76, 41, 22, 0.08);
+  --page-gutter: clamp(36px, 5vw, 78px);
+  --content-width: min(1180px, calc(100% - (var(--page-gutter) * 2)));
 }
 
 * {
@@ -54,8 +56,8 @@ button:focus-visible {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 116px;
-  padding: 34px clamp(28px, 4vw, 64px) 18px;
+  min-height: clamp(86px, 9vw, 116px);
+  padding: clamp(24px, 3vw, 34px) clamp(28px, 4vw, 78px) 14px;
 }
 
 .nav-left,
@@ -65,10 +67,10 @@ button:focus-visible {
 }
 
 .nav-left {
-  gap: clamp(20px, 2.4vw, 34px);
-  font-size: 17px;
+  gap: clamp(18px, 2.2vw, 48px);
+  font-size: clamp(14px, 1.45vw, 27px);
   font-weight: 700;
-  letter-spacing: 2px;
+  letter-spacing: clamp(1.5px, 0.25vw, 4px);
 }
 
 .nav-left a:not(.hamburger):hover,
@@ -103,9 +105,13 @@ button:focus-visible {
   transform: translateX(-50%);
   color: var(--brown);
   font-family: "Trebuchet MS", Arial, sans-serif;
-  font-size: clamp(48px, 4.8vw, 62px);
+  font-size: clamp(38px, 4.8vw, 62px);
   font-weight: 700;
   line-height: 1;
+}
+
+.compact-nav .brand {
+  display: none;
 }
 
 .nav-actions {
@@ -120,12 +126,12 @@ button:focus-visible {
 .bag-pill {
   display: grid;
   place-items: center;
-  width: 50px;
-  height: 50px;
+  width: clamp(50px, 4vw, 76px);
+  height: clamp(50px, 4vw, 76px);
   border-radius: 50%;
   background: var(--maroon);
   color: #fff;
-  font-size: 27px;
+  font-size: clamp(25px, 1.7vw, 37px);
   letter-spacing: 0;
 }
 
@@ -143,20 +149,186 @@ button:focus-visible {
 .cart-pill {
   display: grid;
   place-items: center;
-  width: 84px;
-  height: 50px;
+  width: clamp(84px, 6vw, 112px);
+  height: clamp(50px, 4vw, 76px);
   margin-right: -22px;
   border-radius: 24px;
   background: var(--maroon);
-  font-size: 14px;
+  font-size: clamp(14px, 1.05vw, 22px);
 }
 
 .bag-pill {
   position: relative;
-  width: 50px;
-  height: 50px;
+  width: clamp(50px, 4vw, 76px);
+  height: clamp(50px, 4vw, 76px);
   outline: 8px solid var(--maroon);
   background: #fff;
+}
+
+.home-page {
+  overflow: hidden;
+}
+
+.hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: 44% 56%;
+  min-height: clamp(390px, 49vw, 620px);
+  padding: clamp(24px, 4vw, 70px) clamp(36px, 4vw, 70px) 0;
+}
+
+.hero-copy {
+  align-self: center;
+  text-align: center;
+  padding-bottom: 30px;
+}
+
+.hero-copy h1 {
+  margin: 0 0 clamp(34px, 4vw, 62px);
+  font-size: clamp(22px, 3vw, 42px);
+  font-weight: 900;
+  line-height: 1.25;
+}
+
+.hero-copy a,
+.home-section a {
+  color: #fff;
+  background: var(--maroon);
+  font-weight: 900;
+}
+
+.hero-copy a {
+  display: inline-grid;
+  place-items: center;
+  width: clamp(118px, 16vw, 205px);
+  height: clamp(28px, 3.5vw, 45px);
+  font-size: clamp(10px, 1vw, 15px);
+}
+
+.hero img {
+  align-self: end;
+  width: min(100%, 760px);
+  height: clamp(365px, 47vw, 590px);
+  object-fit: cover;
+  object-position: center top;
+}
+
+.home-section {
+  width: min(1260px, calc(100% - 80px));
+  margin: 0 auto;
+  padding: clamp(44px, 6vw, 76px) 0 0;
+}
+
+.section-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: clamp(24px, 3vw, 44px);
+}
+
+.section-heading h2 {
+  margin: 0;
+  font-size: clamp(24px, 2.2vw, 37px);
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.section-heading a {
+  background: transparent;
+  color: #777;
+  font-size: 12px;
+  text-decoration: underline;
+}
+
+.home-card-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(28px, 4vw, 58px);
+  text-align: center;
+}
+
+.home-card-grid img {
+  width: 100%;
+  object-fit: cover;
+  box-shadow: var(--soft-shadow);
+}
+
+.home-card-grid.products img {
+  aspect-ratio: 0.8;
+}
+
+.home-card-grid.categories img {
+  aspect-ratio: 0.68;
+}
+
+.home-card-grid h3 {
+  margin: 14px 0 8px;
+  font-size: clamp(17px, 1.5vw, 25px);
+  font-weight: 400;
+}
+
+.home-card-grid p {
+  margin: 0;
+  font-size: clamp(17px, 1.4vw, 23px);
+  font-weight: 900;
+}
+
+.about-section {
+  width: min(1140px, calc(100% - 80px));
+  margin: 0 auto;
+  padding: clamp(80px, 8vw, 150px) 0 0;
+  text-align: center;
+}
+
+.about-section h2 {
+  margin: 0 0 38px;
+  font-size: clamp(30px, 3vw, 46px);
+  font-weight: 400;
+}
+
+.about-section p {
+  width: min(640px, 100%);
+  margin: 0 auto 62px;
+  color: #69625b;
+  font-size: clamp(13px, 1vw, 18px);
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.about-collage {
+  position: relative;
+  min-height: clamp(390px, 36vw, 610px);
+  margin-bottom: clamp(58px, 7vw, 110px);
+}
+
+.about-collage img {
+  position: absolute;
+  width: 28%;
+  aspect-ratio: 0.72;
+  object-fit: cover;
+  box-shadow: var(--soft-shadow);
+}
+
+.about-collage img:nth-child(1) { left: 2%; top: 0; }
+.about-collage img:nth-child(2) { left: 29%; top: 28%; z-index: 2; }
+.about-collage img:nth-child(3) { left: 53%; top: 0; }
+.about-collage img:nth-child(4) { right: 0; top: 34%; }
+
+.site-footer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 50px;
+  min-height: clamp(220px, 24vw, 360px);
+  margin-top: 0;
+  padding: clamp(70px, 8vw, 118px) 18% 50px;
+  background: var(--maroon);
+  color: #fff;
+}
+
+.site-footer h4,
+.site-footer p {
+  font-size: 10px;
+  line-height: 1.35;
 }
 
 .bag-pill span,
@@ -215,7 +387,7 @@ button:focus-visible {
   display: grid;
   grid-template-columns: minmax(230px, 270px) minmax(0, 1fr);
   gap: clamp(32px, 4vw, 56px);
-  width: min(1180px, calc(100% - 72px));
+  width: var(--content-width);
   margin: 0 auto;
   padding: 28px 0 68px;
 }
@@ -406,45 +578,45 @@ button:focus-visible {
 }
 
 .framed-page {
-  width: min(1812px, calc(100% - 96px));
+  width: min(1110px, calc(100% - (var(--page-gutter) * 2)));
   margin: 0 auto;
-  padding: 86px 0 70px;
+  padding: clamp(36px, 4vw, 58px) 0 clamp(42px, 5vw, 64px);
 }
 
 .framed-page > h1 {
   position: relative;
   z-index: 1;
-  width: 340px;
-  height: 72px;
+  width: clamp(245px, 20vw, 310px);
+  height: clamp(52px, 5vw, 66px);
   display: grid;
   place-items: center;
-  margin: 0 0 -38px 95px;
-  border: 6px solid var(--maroon);
-  border-radius: 28px;
+  margin: 0 0 -34px clamp(44px, 6vw, 90px);
+  border: 5px solid var(--maroon);
+  border-radius: 24px;
   background: #fff;
   box-shadow: 0 10px 26px rgba(76, 41, 22, 0.08);
-  font-size: 29px;
-  letter-spacing: 7px;
+  font-size: clamp(23px, 2vw, 29px);
+  letter-spacing: clamp(4px, 0.45vw, 7px);
 }
 
 .panel-frame {
   position: relative;
   display: grid;
   grid-template-columns: 1fr 1px 1fr;
-  min-height: 780px;
-  padding: 110px clamp(64px, 7vw, 126px) 96px;
+  min-height: clamp(460px, 50vw, 640px);
+  padding: clamp(64px, 5vw, 86px) clamp(34px, 5vw, 74px) clamp(76px, 6vw, 92px);
   border: 2px solid var(--line);
-  border-radius: 56px;
+  border-radius: clamp(34px, 4vw, 50px);
   box-shadow: var(--soft-shadow);
 }
 
 .profile-left {
-  padding-right: 64px;
+  padding-right: clamp(28px, 4vw, 52px);
 }
 
 .profile-right {
-  padding-left: 36px;
-  padding-top: 38px;
+  padding-left: clamp(26px, 3vw, 36px);
+  padding-top: clamp(18px, 3vw, 34px);
 }
 
 .profile-divider {
@@ -455,16 +627,16 @@ button:focus-visible {
 .profile-page label,
 .select-row label {
   display: block;
-  margin-bottom: 12px;
-  font-size: 23px;
+  margin-bottom: 8px;
+  font-size: clamp(18px, 1.5vw, 22px);
   font-weight: 900;
 }
 
 .avatar-box {
   position: relative;
-  width: 154px;
-  height: 132px;
-  margin: 0 0 33px 5px;
+  width: 132px;
+  height: 114px;
+  margin: 0 0 26px 5px;
   border: 2px solid var(--line);
 }
 
@@ -472,8 +644,8 @@ button:focus-visible {
   position: absolute;
   right: -22px;
   bottom: -22px;
-  width: 52px;
-  height: 52px;
+  width: 44px;
+  height: 44px;
   border: 0;
   border-radius: 50%;
   background: var(--maroon);
@@ -481,13 +653,13 @@ button:focus-visible {
 }
 
 .field-row {
-  margin-bottom: 18px;
+  margin-bottom: 14px;
 }
 
 .line-input,
 .select-row div {
   position: relative;
-  height: 32px;
+  height: 28px;
   border: 2px solid var(--line);
   background: rgba(210, 197, 179, 0.25);
 }
@@ -502,7 +674,7 @@ button:focus-visible {
 }
 
 .select-row {
-  margin-bottom: 23px;
+  margin-bottom: 18px;
 }
 
 .logout {
@@ -512,37 +684,37 @@ button:focus-visible {
   margin-top: 12px;
   margin-left: 45px;
   color: var(--line);
-  font-size: 23px;
+  font-size: 21px;
 }
 
 .cart-page .panel-frame {
-  padding-top: 70px;
+  padding-top: clamp(58px, 5vw, 70px);
 }
 
 .cart-left,
 .cart-right {
-  padding: 0 clamp(34px, 4vw, 72px);
+  padding: 0 clamp(22px, 3vw, 46px);
 }
 
 .cart-page h2 {
-  margin: 0 0 34px;
+  margin: 0 0 28px;
   color: var(--maroon);
-  font-size: clamp(28px, 2.2vw, 34px);
-  letter-spacing: 5px;
+  font-size: clamp(23px, 1.9vw, 30px);
+  letter-spacing: 4px;
   text-align: center;
 }
 
 .cart-item {
   display: grid;
-  grid-template-columns: 150px 1fr;
-  gap: 36px;
+  grid-template-columns: clamp(105px, 9vw, 132px) 1fr;
+  gap: clamp(22px, 2.5vw, 32px);
   align-items: center;
-  margin-bottom: 56px;
+  margin-bottom: clamp(34px, 4vw, 46px);
 }
 
 .cart-item > div {
-  width: 150px;
-  height: 112px;
+  width: clamp(105px, 9vw, 132px);
+  height: clamp(82px, 7vw, 100px);
   background: var(--muted);
   box-shadow: var(--soft-shadow);
 }
@@ -550,19 +722,19 @@ button:focus-visible {
 .cart-item h3,
 .cart-item p {
   margin: 0;
-  font-size: clamp(26px, 2.1vw, 34px);
-  letter-spacing: 4px;
+  font-size: clamp(22px, 1.75vw, 29px);
+  letter-spacing: 3px;
 }
 
 .cart-item p {
-  margin-top: 22px;
+  margin-top: 16px;
 }
 
 .coupon-row {
   display: grid;
-  grid-template-columns: 165px 1fr;
-  gap: 34px;
-  margin: 42px 0 82px;
+  grid-template-columns: 132px 1fr;
+  gap: 26px;
+  margin: 32px 0 62px;
 }
 
 .coupon-row button,
@@ -576,31 +748,31 @@ button:focus-visible {
 }
 
 .coupon-row button {
-  height: 54px;
+  height: 46px;
   border-radius: 6px;
-  font-size: 24px;
+  font-size: 21px;
 }
 
 .coupon-row span {
   display: grid;
   place-items: center;
-  height: 50px;
+  height: 46px;
   border: 2px solid var(--line);
   background: transparent;
   color: var(--line);
-  font-size: 24px;
+  font-size: 21px;
 }
 
 dl {
   display: grid;
   grid-template-columns: 1fr auto;
-  gap: 9px 42px;
+  gap: 7px 32px;
   margin: 0;
-  padding: 0 0 42px 32px;
+  padding: 0 0 32px 20px;
   border-bottom: 2px solid var(--line);
-  font-size: clamp(27px, 2.1vw, 34px);
+  font-size: clamp(22px, 1.75vw, 29px);
   font-weight: 900;
-  letter-spacing: 4px;
+  letter-spacing: 3px;
 }
 
 dd {
@@ -610,21 +782,21 @@ dd {
 .invoice {
   display: flex;
   justify-content: space-between;
-  padding: 32px 0 0 52px;
-  font-size: clamp(28px, 2.1vw, 34px);
+  padding: 26px 0 0 34px;
+  font-size: clamp(23px, 1.75vw, 29px);
   font-weight: 900;
-  letter-spacing: 4px;
+  letter-spacing: 3px;
 }
 
 .payment-btn {
   position: absolute;
   left: 50%;
-  bottom: 54px;
+  bottom: 42px;
   transform: translateX(-50%);
-  width: 419px;
-  height: 56px;
+  width: 360px;
+  height: 48px;
   border-radius: 6px;
-  font-size: 25px;
+  font-size: 21px;
 }
 
 .design-page {
@@ -709,11 +881,11 @@ dd {
 
 .product-page {
   display: grid;
-  grid-template-columns: minmax(440px, 0.98fr) minmax(420px, 0.82fr);
-  gap: clamp(64px, 7vw, 104px);
-  width: min(1540px, calc(100% - 96px));
+  grid-template-columns: minmax(380px, 0.9fr) minmax(390px, 0.72fr);
+  gap: clamp(44px, 5.5vw, 82px);
+  width: min(1320px, calc(100% - (var(--page-gutter) * 2)));
   margin: 0 auto;
-  padding: 86px 0 82px;
+  padding: clamp(48px, 5vw, 74px) 0 clamp(50px, 6vw, 76px);
   align-items: start;
 }
 
@@ -722,8 +894,8 @@ dd {
 }
 
 .product-photo-wrap img {
-  width: min(730px, 100%);
-  height: clamp(620px, 47vw, 720px);
+  width: min(620px, 100%);
+  height: clamp(430px, 42vw, 600px);
   object-fit: cover;
   object-position: center 62%;
   box-shadow: var(--soft-shadow);
@@ -733,12 +905,12 @@ dd {
   display: flex;
   justify-content: center;
   gap: 18px;
-  margin-top: 36px;
+  margin-top: 28px;
 }
 
 .dots span {
-  width: 24px;
-  height: 30px;
+  width: 22px;
+  height: 28px;
   border-radius: 50%;
   border: 2px solid var(--maroon);
 }
@@ -748,11 +920,11 @@ dd {
 }
 
 .product-info {
-  padding-top: 18px;
+  padding-top: 10px;
 }
 
 .price {
-  margin: 0 27px 58px 0;
+  margin: 0 27px 46px 0;
   text-align: right;
   font-size: 23px;
   font-weight: 900;
@@ -762,9 +934,9 @@ dd {
 .stars {
   display: flex;
   align-items: center;
-  gap: 22px;
-  margin: 0 0 48px 26px;
-  font-size: 34px;
+  gap: 18px;
+  margin: 0 0 38px 22px;
+  font-size: 30px;
 }
 
 .stars span,
@@ -791,7 +963,7 @@ dd {
 }
 
 .description {
-  margin: 0 0 86px;
+  margin: 0 0 66px;
   font-size: 18px;
   font-weight: 900;
   letter-spacing: 3px;
@@ -799,37 +971,231 @@ dd {
 
 .product-info label {
   display: block;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   color: #6e655f;
-  font-size: 21px;
+  font-size: 19px;
   letter-spacing: 5px;
 }
 
 .swatches {
   display: flex;
   gap: 8px;
-  margin-bottom: 36px;
+  margin-bottom: 28px;
 }
 
 .swatches button {
-  width: 82px;
-  height: 60px;
+  width: clamp(52px, 4vw, 72px);
+  height: 52px;
   border: 0;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.03);
 }
 
+.auth-page {
+  min-height: 100vh;
+  padding: clamp(56px, 6vw, 96px) 0;
+  text-align: center;
+}
+
+.auth-logo {
+  display: inline-block;
+  color: var(--brown);
+  font-size: clamp(64px, 6vw, 96px);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.auth-page h1 {
+  margin: clamp(80px, 8vw, 135px) 0 clamp(70px, 7vw, 122px);
+  font-size: clamp(64px, 6vw, 92px);
+  font-weight: 900;
+}
+
+.signup h1 {
+  margin-bottom: clamp(54px, 5vw, 76px);
+}
+
+.auth-form {
+  width: min(835px, calc(100% - 80px));
+  margin: 0 auto;
+}
+
+.auth-field {
+  position: relative;
+  display: block;
+  margin-bottom: clamp(44px, 5vw, 84px);
+  text-align: left;
+}
+
+.signup .auth-field {
+  margin-bottom: clamp(28px, 3.2vw, 55px);
+}
+
+.auth-field span {
+  display: block;
+  margin-left: 32px;
+  font-size: clamp(24px, 1.8vw, 31px);
+}
+
+.auth-field input {
+  width: 100%;
+  height: 42px;
+  border: 0;
+  border-bottom: 7px solid #000;
+  background: transparent;
+  outline: 0;
+  font: inherit;
+}
+
+.auth-icon {
+  position: absolute;
+  right: 10px;
+  bottom: 18px;
+  width: 45px;
+  height: 45px;
+  border: 3px solid #000;
+}
+
+.auth-icon.user {
+  border-radius: 50%;
+}
+
+.auth-icon.user::before,
+.auth-icon.user::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 2px solid #000;
+}
+
+.auth-icon.user::before {
+  top: 7px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.auth-icon.user::after {
+  bottom: 6px;
+  width: 27px;
+  height: 12px;
+  border-bottom: 0;
+  border-radius: 18px 18px 0 0;
+}
+
+.auth-icon.phone,
+.auth-icon.mail,
+.auth-icon.key {
+  border: 0;
+}
+
+.auth-icon.phone::before {
+  content: "";
+  position: absolute;
+  inset: 9px 3px 13px;
+  border: 3px solid #000;
+  border-top: 0;
+  border-radius: 0 0 28px 28px;
+  transform: rotate(25deg);
+}
+
+.auth-icon.mail::before {
+  content: "";
+  position: absolute;
+  inset: 8px 0 9px;
+  border: 3px solid #000;
+  border-radius: 50%;
+}
+
+.auth-icon.mail::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  right: 5px;
+  top: 17px;
+  height: 14px;
+  border-top: 3px solid #000;
+  transform: skewY(16deg);
+}
+
+.auth-icon.key::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 4px;
+  width: 23px;
+  height: 18px;
+  border: 3px solid #000;
+  border-radius: 50%;
+}
+
+.auth-icon.key::after {
+  content: "";
+  position: absolute;
+  left: 21px;
+  bottom: 21px;
+  width: 36px;
+  height: 7px;
+  border: 3px solid #000;
+  border-left: 0;
+  transform: rotate(-32deg);
+}
+
+.login-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: clamp(60px, 6vw, 96px) 0 40px;
+  font-size: clamp(23px, 1.8vw, 31px);
+}
+
+.login-options label {
+  display: flex;
+  align-items: center;
+  gap: 45px;
+}
+
+.login-options label span {
+  width: 59px;
+  height: 50px;
+  border: 2px solid #000;
+}
+
+.login-options a {
+  border-bottom: 2px solid #000;
+}
+
+.auth-form button,
+.secondary-auth {
+  display: grid;
+  place-items: center;
+  width: min(365px, 100%);
+  height: 104px;
+  margin: 0 auto;
+  border: 0;
+  border-radius: 28px;
+  background: var(--maroon);
+  color: #fff;
+  font-size: clamp(39px, 3vw, 52px);
+  font-weight: 900;
+}
+
+.secondary-auth {
+  margin-top: 24px;
+}
+
 .guide {
-  margin: 20px 0 94px;
+  margin: 18px 0 70px;
   color: #716b66;
   font-family: Arial, sans-serif;
   font-size: 16px;
 }
 
 .add-cart {
-  width: 545px;
+  width: 500px;
   max-width: 100%;
-  height: 68px;
-  font-size: 32px;
+  height: 60px;
+  font-size: 29px;
   font-weight: 900;
   letter-spacing: 3px;
 }
@@ -914,6 +1280,74 @@ dd {
   width: 15px;
   height: 2px;
   box-shadow: -1px -4px 0 -0.5px var(--line), -1px 4px 0 -0.5px var(--line);
+}
+
+@media (max-width: 1400px) {
+  :root {
+    --page-gutter: clamp(28px, 4vw, 54px);
+  }
+
+  .framed-page {
+    width: min(1040px, calc(100% - (var(--page-gutter) * 2)));
+  }
+
+  .panel-frame {
+    min-height: 560px;
+    padding-left: clamp(30px, 4vw, 54px);
+    padding-right: clamp(30px, 4vw, 54px);
+  }
+
+  .cart-left,
+  .cart-right {
+    padding: 0 clamp(14px, 2vw, 28px);
+  }
+
+  .cart-page h2 {
+    font-size: clamp(21px, 1.8vw, 26px);
+  }
+
+  .cart-item h3,
+  .cart-item p,
+  dl,
+  .invoice {
+    font-size: clamp(20px, 1.65vw, 25px);
+    letter-spacing: 2.5px;
+  }
+
+  .coupon-row {
+    grid-template-columns: 112px 1fr;
+    gap: 20px;
+  }
+
+  .coupon-row button,
+  .coupon-row span {
+    font-size: 18px;
+  }
+
+  .product-page {
+    width: min(1180px, calc(100% - (var(--page-gutter) * 2)));
+    grid-template-columns: minmax(340px, 0.84fr) minmax(360px, 0.68fr);
+    gap: clamp(34px, 4vw, 60px);
+  }
+
+  .product-photo-wrap img {
+    width: min(550px, 100%);
+    height: clamp(410px, 40vw, 530px);
+  }
+
+  .size-row button {
+    width: 70px;
+    height: 50px;
+  }
+
+  .swatches button {
+    width: 58px;
+    height: 48px;
+  }
+
+  .guide {
+    margin-bottom: 52px;
+  }
 }
 
 @media (max-width: 1100px) {

@@ -4,17 +4,20 @@ import blackLook from '../img2.jpg'
 import modelCrop from '/mymodel.jpg'
 
 const routes = {
-  '/': 'styles',
+  '/': 'home',
+  '/home': 'home',
   '/styles': 'styles',
   '/profile': 'profile',
   '/cart': 'cart',
   '/design': 'design',
+  '/login': 'login',
+  '/signup': 'signup',
   '/products/beige-trousers': 'product',
 }
 
 const navItems = [
-  { label: 'Home', href: '/styles' },
-  { label: 'Collections', href: '/cart' },
+  { label: 'Home', href: '/' },
+  { label: 'Collections', href: '/styles' },
   { label: 'Styles', href: '/design' },
 ]
 
@@ -27,19 +30,22 @@ function App() {
 
   return (
     <main className="figma-app">
-      <FigmaNav />
+      {page !== 'login' && page !== 'signup' && <FigmaNav compact={page === 'design'} />}
+      {page === 'home' && <HomePage />}
       {page === 'styles' && <StylesPage />}
       {page === 'profile' && <ProfilePage />}
       {page === 'cart' && <CartPage />}
       {page === 'design' && <DesignPage />}
       {page === 'product' && <ProductPage />}
+      {page === 'login' && <AuthPage mode="login" />}
+      {page === 'signup' && <AuthPage mode="signup" />}
     </main>
   )
 }
 
-function FigmaNav() {
+function FigmaNav({ compact = false }) {
   return (
-    <header className="figma-nav">
+    <header className={`figma-nav ${compact ? 'compact-nav' : ''}`}>
       <div className="nav-left">
         <a className="hamburger" href="/styles" aria-label="menu">
           <span />
@@ -52,7 +58,7 @@ function FigmaNav() {
           </a>
         ))}
       </div>
-      <a className="brand" href="/styles">logo</a>
+      {/* <a className="brand" href="/styles">logo</a> */}
       <div className="nav-actions">
         <a className="ai-pill" href="/design">AI</a>
         <a className="cart-pill" href="/cart">Cart</a>
@@ -64,6 +70,106 @@ function FigmaNav() {
         </a>
       </div>
     </header>
+  )
+}
+
+function HomePage() {
+  const collectionItems = [
+    ['White Formal Trousers', blackLook],
+    ['Floral Casual Day Set', modelCrop],
+    ['Formal Black Suit', beigeLook],
+    ['Formal Black Suit', blackLook],
+  ]
+  const categories = [
+    ['FORMAL', modelCrop],
+    ['CASUAL', beigeLook],
+    ['EVENING WEAR', blackLook],
+    ['SPORTSWEAR', modelCrop],
+  ]
+
+  return (
+    <section className="home-page">
+      <section className="hero">
+        <div className="hero-copy">
+          <h1>Design Your Elegance<br />Be Unique</h1>
+          <a href="/styles">SHOP NOW...</a>
+        </div>
+        <img src={modelCrop} alt="Elegant fashion model" />
+      </section>
+
+      <section className="home-section collections-section">
+        <div className="section-heading"><h2>COLLECTIONS 25-26</h2><a href="/styles">See All</a></div>
+        <div className="home-card-grid products">
+          {collectionItems.map(([name, image], index) => (
+            <article key={`${name}-${index}`}>
+              <img src={image} alt={name} />
+              <h3>{name}</h3>
+              <p>$99</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="home-section">
+        <div className="section-heading"><h2>SHOP CATEGORIES</h2><a href="/styles">See More</a></div>
+        <div className="home-card-grid categories">
+          {categories.map(([name, image]) => (
+            <article key={name}>
+              <img src={image} alt={name} />
+              <h3>{name}</h3>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="about-section">
+        <h2>WHO WE ARE</h2>
+        <p>at elegant vogue, we blend creativity with craftsmanship to create fashion that transcends trends and stands the test of time each design is meticulously crafted, ensuring the highest quality exquisite finish</p>
+        <div className="about-collage">
+          <img src={blackLook} alt="" />
+          <img src={beigeLook} alt="" />
+          <img src={modelCrop} alt="" />
+          <img src={blackLook} alt="" />
+        </div>
+      </section>
+
+      <footer className="site-footer">
+        <div><h4>CUSTOMER SERVICE</h4><p>DELIVERY OPTION<br />PAYMENT METHODS</p></div>
+        <div><h4>CALL US</h4><p>TEL:2223899998<br />TIME/ AM 8:00 - PM 10:00<br />EMAIL/SHOP@GG.COM</p></div>
+        <div><h4>FOLLOW US</h4></div>
+      </footer>
+    </section>
+  )
+}
+
+function AuthPage({ mode }) {
+  const isSignup = mode === 'signup'
+  const fields = isSignup
+    ? [['User name', 'user'], ['phone number', 'phone'], ['Email', 'mail'], ['password', 'key'], ['confirm password', 'key']]
+    : [['User name', 'user'], ['password', 'key']]
+
+  return (
+    <section className={`auth-page ${mode}`}>
+      <a className="auth-logo" href="/">logo</a>
+      <h1>{isSignup ? 'sign up' : 'log in'}</h1>
+      <form className="auth-form">
+        {fields.map(([label, icon]) => (
+          <label className="auth-field" key={label}>
+            <span>{label}</span>
+            <input type={label.includes('password') ? 'password' : 'text'} />
+            <i className={`auth-icon ${icon}`} />
+          </label>
+        ))}
+        {!isSignup && (
+          <div className="login-options">
+            <label><span />remember me</label>
+            <a href="/login">forget password</a>
+          </div>
+        )}
+        <button type="button">{isSignup ? 'sign up' : 'log in'}</button>
+        {isSignup && <a className="secondary-auth" href="/login">log in</a>}
+      </form>
+    </section>
   )
 }
 
