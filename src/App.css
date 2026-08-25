@@ -121,6 +121,39 @@ button:focus-visible {
   letter-spacing: 1.4px;
 }
 
+.auth-link,
+.nav-logout {
+  display: inline-grid;
+  place-items: center;
+  min-width: 86px;
+  height: clamp(42px, 3.2vw, 56px);
+  padding: 0 18px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.34);
+  color: var(--maroon);
+  font-size: clamp(13px, 0.95vw, 17px);
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.signup-link,
+.nav-logout {
+  background: var(--maroon);
+  color: #fff;
+}
+
+.nav-logout {
+  display: inline-flex;
+  gap: 8px;
+  min-width: 98px;
+}
+
+.auth-link:hover,
+.nav-logout:hover {
+  box-shadow: var(--soft-shadow);
+  transform: translateY(-1px);
+}
+
 .ai-pill,
 .user-pill,
 .bag-pill {
@@ -1166,6 +1199,7 @@ dd {
 }
 
 .auth-form button,
+.primary-auth,
 .secondary-auth {
   display: grid;
   place-items: center;
@@ -1182,6 +1216,15 @@ dd {
 
 .secondary-auth {
   margin-top: 24px;
+}
+
+.auth-switch {
+  display: inline-block;
+  margin-top: 24px;
+  color: var(--maroon);
+  font-size: clamp(18px, 1.45vw, 25px);
+  font-weight: 900;
+  border-bottom: 2px solid currentColor;
 }
 
 .guide {
@@ -1260,11 +1303,19 @@ dd {
   height: 22px;
 }
 
+.nav-logout span {
+  position: relative;
+  width: 18px;
+  height: 18px;
+}
+
 .logout span::before,
-.logout span::after {
+.logout span::after,
+.nav-logout span::before,
+.nav-logout span::after {
   content: "";
   position: absolute;
-  background: var(--line);
+  background: currentColor;
 }
 
 .logout span::before {
@@ -1280,6 +1331,21 @@ dd {
   width: 15px;
   height: 2px;
   box-shadow: -1px -4px 0 -0.5px var(--line), -1px 4px 0 -0.5px var(--line);
+}
+
+.nav-logout span::before {
+  left: 7px;
+  top: 1px;
+  width: 2px;
+  height: 16px;
+}
+
+.nav-logout span::after {
+  left: 2px;
+  top: 8px;
+  width: 13px;
+  height: 2px;
+  box-shadow: -1px -4px 0 -0.5px currentColor, -1px 4px 0 -0.5px currentColor;
 }
 
 @media (max-width: 1400px) {
@@ -1430,6 +1496,8 @@ dd {
 
   .nav-actions {
     gap: 8px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
   }
 
   .ai-pill,
@@ -1442,6 +1510,15 @@ dd {
   .cart-pill {
     width: 68px;
     height: 42px;
+  }
+
+  .auth-link,
+  .nav-logout {
+    min-width: 72px;
+    height: 36px;
+    padding: 0 12px;
+    border-radius: 14px;
+    font-size: 12px;
   }
 
   .brand {

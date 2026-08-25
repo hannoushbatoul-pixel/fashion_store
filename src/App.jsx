@@ -60,6 +60,8 @@ function FigmaNav({ compact = false }) {
       </div>
       {/* <a className="brand" href="/styles">logo</a> */}
       <div className="nav-actions">
+        <a className="auth-link" href="/login">Log in</a>
+        <a className="auth-link signup-link" href="/signup">Sign up</a>
         <a className="ai-pill" href="/design">AI</a>
         <a className="cart-pill" href="/cart">Cart</a>
         <a className="bag-pill" href="/cart" aria-label="shopping bag">
@@ -68,6 +70,7 @@ function FigmaNav({ compact = false }) {
         <a className="user-pill" href="/profile" aria-label="profile">
           <span />
         </a>
+        <a className="nav-logout" href="/login"><span aria-hidden="true" />Log out</a>
       </div>
     </header>
   )
@@ -166,8 +169,9 @@ function AuthPage({ mode }) {
             <a href="/login">forget password</a>
           </div>
         )}
-        <button type="button">{isSignup ? 'sign up' : 'log in'}</button>
+        <a className="primary-auth" href="/styles">{isSignup ? 'sign up' : 'log in'}</a>
         {isSignup && <a className="secondary-auth" href="/login">log in</a>}
+        {!isSignup && <a className="auth-switch" href="/signup">create account</a>}
       </form>
     </section>
   )
