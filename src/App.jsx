@@ -2,6 +2,22 @@ import './App.css'
 import beigeLook from '../img.jpg'
 import blackLook from '../img2.jpg'
 import modelCrop from '/mymodel.jpg'
+import partylook from '../photo_٢٠٢٦-٠٤-٠٩_٢٣-٠٥-٠١.jpg'
+import abaylook from '../photo_٢٠٢٦-٠٤-٠٩_٢٢-٥٥-٢٢.jpg'
+import casuallook from '../photo_٢٠٢٦-٠٤-٠٩_٢٣-٠٤-٥٧.jpg'
+import white from '../photo_٢٠٢٦-٠٤-٠٩_٢٢-٥٥-٢٣.jpg'
+import evningsuit from '../photo_٢٠٢٦-٠٤-٠٩_٢٣-٠٥-٠١ (2).jpg'
+import sport from '../sport.jpg'
+import wear from '../photo_٢٠٢٦-٠٤-٠٩_٢٣-٠٥-٠٢.jpg'
+import casual from '../photo_٢٠٢٦-٠٤-٠٩_٢٣-٠٤-٥٦.jpg'
+
+
+
+
+
+
+
+import { FaFacebookF, FaInstagram } from 'react-icons/fa';
 
 const routes = {
   '/': 'home',
@@ -60,17 +76,20 @@ function FigmaNav({ compact = false }) {
       </div>
       {/* <a className="brand" href="/styles">logo</a> */}
       <div className="nav-actions">
-        <a className="auth-link" href="/login">Log in</a>
-        <a className="auth-link signup-link" href="/signup">Sign up</a>
-        <a className="ai-pill" href="/design">AI</a>
-        <a className="cart-pill" href="/cart">Cart</a>
-        <a className="bag-pill" href="/cart" aria-label="shopping bag">
-          <span />
-        </a>
         <a className="user-pill" href="/profile" aria-label="profile">
           <span />
         </a>
-        <a className="nav-logout" href="/login"><span aria-hidden="true" />Log out</a>
+        
+        <a className="ai-pill" href="/design">AI</a>
+
+                <a className="cart-pill" href="/cart">Cart</a>
+          <span />
+        
+        <a className="auth-link" href="/login">Log in</a>
+        <a className="auth-link signup-link" href="/signup">Sign up</a>
+        
+      
+      
       </div>
     </header>
   )
@@ -78,16 +97,16 @@ function FigmaNav({ compact = false }) {
 
 function HomePage() {
   const collectionItems = [
-    ['White Formal Trousers', blackLook],
-    ['Floral Casual Day Set', modelCrop],
-    ['Formal Black Suit', beigeLook],
-    ['Formal Black Suit', blackLook],
-  ]
+    { name:'White Formal Trousers', image:white },
+    { name:'Floral Casual Day Set', image: casuallook },
+    { name:'evining white suit', image:evningsuit },
+    { name:'Formal Black Suit', image: blackLook },
+  ];
   const categories = [
-    ['FORMAL', modelCrop],
-    ['CASUAL', beigeLook],
-    ['EVENING WEAR', blackLook],
-    ['SPORTSWEAR', modelCrop],
+   { name:'formal', image:beigeLook },
+    { name:'casual', image: casual },
+    { name:'evining wear', image:wear },
+    { name:'sportwerar', image: sport },
   ]
 
   return (
@@ -103,20 +122,20 @@ function HomePage() {
       <section className="home-section collections-section">
         <div className="section-heading"><h2>COLLECTIONS 25-26</h2><a href="/styles">See All</a></div>
         <div className="home-card-grid products">
-          {collectionItems.map(([name, image], index) => (
+          {collectionItems.map(({ name,image }, index) => (
             <article key={`${name}-${index}`}>
               <img src={image} alt={name} />
               <h3>{name}</h3>
-              <p>$99</p>
             </article>
           ))}
         </div>
       </section>
 
       <section className="home-section">
-        <div className="section-heading"><h2>SHOP CATEGORIES</h2><a href="/styles">See More</a></div>
+        <div className="section-heading"><h2>Styles</h2><a href="/styles">See More</a></div>
         <div className="home-card-grid categories">
-          {categories.map(([name, image]) => (
+                    {categories.map(({ name,image },) => (
+
             <article key={name}>
               <img src={image} alt={name} />
               <h3>{name}</h3>
@@ -130,16 +149,39 @@ function HomePage() {
         <p>at elegant vogue, we blend creativity with craftsmanship to create fashion that transcends trends and stands the test of time each design is meticulously crafted, ensuring the highest quality exquisite finish</p>
         <div className="about-collage">
           <img src={blackLook} alt="" />
-          <img src={beigeLook} alt="" />
-          <img src={modelCrop} alt="" />
-          <img src={blackLook} alt="" />
+          <img src={casuallook} alt="" />
+          <img src={partylook} alt="" />
+          <img src={abaylook} alt="" />
         </div>
       </section>
 
       <footer className="site-footer">
         <div><h4>CUSTOMER SERVICE</h4><p>DELIVERY OPTION<br />PAYMENT METHODS</p></div>
         <div><h4>CALL US</h4><p>TEL:2223899998<br />TIME/ AM 8:00 - PM 10:00<br />EMAIL/SHOP@GG.COM</p></div>
-        <div><h4>FOLLOW US</h4></div>
+        <div><h4>FOLLOW US</h4>
+        <div className="flex  flex-col gap-6 items-start">
+    <a 
+      href="https://facebook.com" 
+      target="_blank" 
+      rel="noopener noreferrer"
+      className=" mb-4 text-white hover:text-gray-300 transition-colors"
+    >
+              <FaFacebookF size={20} />
+              <span className='text-xs'>fashion-store</span>
+    </a>
+    
+    <a 
+      href="https://instagram.com" 
+      target="_blank" 
+      rel="noopener noreferrer"
+      className=" text-white hover:text-gray-300 transition-colors"
+    >
+              <FaInstagram size={20} />
+                            <span className='text-xs'>fashion-store</span>
+
+    </a>
+  </div>
+        </div>
       </footer>
     </section>
   )
@@ -153,7 +195,7 @@ function AuthPage({ mode }) {
 
   return (
     <section className={`auth-page ${mode}`}>
-      <a className="auth-logo" href="/">logo</a>
+      <a className="auth-logo" href="/"> <img src="/تنزيل.png" alt="Logo" /></a>
       <h1>{isSignup ? 'sign up' : 'log in'}</h1>
       <form className="auth-form">
         {fields.map(([label, icon]) => (

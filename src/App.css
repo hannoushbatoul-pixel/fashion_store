@@ -1025,7 +1025,7 @@ dd {
 
 .auth-page {
   min-height: 100vh;
-  padding: clamp(56px, 6vw, 96px) 0;
+  transform: scale(0.5);
   text-align: center;
 }
 
